@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImpPersonaService implements IPersonaService{
     @Autowired IPersonaRepository ipersonaRepository;
-    
+
     @Override
     public List<Persona> getPersona() {
         List<Persona> persona = ipersonaRepository.findAll();
@@ -40,5 +40,10 @@ public class ImpPersonaService implements IPersonaService{
     public List<Persona> list() {
         return ipersonaRepository.findAll();
     }
+
+  @Override
+  public boolean existsById(long id) {
+    return false;
+  }
 
 }

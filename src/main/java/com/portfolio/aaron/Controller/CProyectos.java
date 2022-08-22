@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/proyectos")
 @CrossOrigin(origins = "https://frontendap-58a02.web.app")
+  //@CrossOrigin( origins = "https://localhost:4200")
 public class CProyectos {
     @Autowired
     Sproyectos sproyectos;
