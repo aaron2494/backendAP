@@ -43,7 +43,7 @@ public class ImpPersonaService implements IPersonaService{
 
   @Override
   public boolean existsById(long id) {
-    return false;
+    return ipersonaRepository.existsById(id);
   }
 
 }
