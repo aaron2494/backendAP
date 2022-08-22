@@ -1,10 +1,13 @@
 
 package com.portfolio.aaron.Controller;
 
+import com.portfolio.aaron.Dto.dtoPersona;
 import com.portfolio.aaron.Entity.Persona;
 import com.portfolio.aaron.Entity.Skills;
 import com.portfolio.aaron.Interface.IPersonaService;
 import java.util.List;
+
+import com.portfolio.aaron.Security.Controller.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,28 +43,20 @@ public class PersonaController {
         ipersonaService.deletePersona(id);
         return "La persona fue eliminada correctamente";
     }
-    
+
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/editar/{id}")
-    public Persona edit(@PathVariable Long id,
-                               @RequestParam("nombre") String nuevoNombre,
-                               @RequestParam("apellido") String nuevoApellido,
-                               @RequestParam("descripcion")String nuevaDescripcion,
-                               @RequestParam("img") String nuevoImg){
-        Persona persona = ipersonaService.findPersona(id);
-        
-        persona.setNombre(nuevoNombre);
-        persona.setApellido(nuevoApellido);
-        persona.setImg(nuevoImg);
-        persona.setDescripcion(nuevaDescripcion);
-        
-        ipersonaService.savePersona(persona);
-        return persona;
+    @PutMapping("/personas/editar/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody dtoPersona dtopers) {
+
+        Persona pers = ipersonaService.findPersona(id);
+        pers.setNombre(dtopers.getNombre());
+        pers.setApellido((dtopers.getApellido()));
+        pers.setDescripcion(dtopers.getDescripcion());
+        pers.setImg((dtopers.getImg()));
+
+        ipersonaService.savePersona(pers);
+        return new ResponseEntity(new Mensaje("persona actualizada"), HttpStatus.OK);
     }
-    
-    @GetMapping("/traer/perfil")
-    public Persona findPersona(){
-        return ipersonaService.findPersona((long)1);
-    }
+
    
 }

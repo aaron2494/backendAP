@@ -28,5 +28,15 @@ public class Persona {
     private String descripcion;
 
     private String img;
-    
+
+    public Persona(){
+    }
+
+    public Persona(Long id, String nombre, String apellido, String descripcion, String img) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.descripcion = descripcion;
+        this.img = img;
+    }
 }
