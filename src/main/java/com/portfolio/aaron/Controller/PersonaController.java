@@ -45,7 +45,7 @@ public class PersonaController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/personas/editar/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody dtoPersona dtopers) {
 
         Persona pers = ipersonaService.findPersona(id);
@@ -58,10 +58,7 @@ public class PersonaController {
         return new ResponseEntity(new Mensaje("persona actualizada"), HttpStatus.OK);
     }
 
-    @GetMapping("/traer/perfil")
-    public Persona findPersona(){
-        return ipersonaService.findPersona((long)1);
-    }
+
 
 
 }
