@@ -17,4 +17,10 @@ public interface IPersonaService {
     public Persona findPersona(Long id);
 
     List<Persona> list();
+
+    boolean existsById(long id);
+
+    boolean existsByNombre(String nombre);
+
+    List<Object> getByNombre(String nombre);
 }

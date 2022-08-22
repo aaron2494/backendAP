@@ -2,9 +2,12 @@
 package com.portfolio.aaron.Service;
 
 import com.portfolio.aaron.Entity.Persona;
+import com.portfolio.aaron.Entity.Proyectos;
 import com.portfolio.aaron.Interface.IPersonaService;
 import com.portfolio.aaron.Repository.IPersonaRepository;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +20,6 @@ public class ImpPersonaService implements IPersonaService{
         List<Persona> persona = ipersonaRepository.findAll();
         return persona;
     }
-
     @Override
     public void savePersona(Persona persona) {
         ipersonaRepository.save(persona);
