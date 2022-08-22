@@ -44,7 +44,6 @@ public class PersonaController {
         return "La persona fue eliminada correctamente";
     }
 
-<<<<<<< HEAD
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/personas/editar/{id}")
     public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody dtoPersona dtopers) {
@@ -59,30 +58,10 @@ public class PersonaController {
         return new ResponseEntity(new Mensaje("persona actualizada"), HttpStatus.OK);
     }
 
-   
-=======
-
-    @PutMapping("/editar/{id}")
-    public Persona edit(@PathVariable Long id,
-                               @RequestParam("nombre") String nuevoNombre,
-                               @RequestParam("apellido") String nuevoApellido,
-                               @RequestParam("descripcion")String nuevaDescripcion,
-                               @RequestParam("img") String nuevoImg){
-        Persona persona = ipersonaService.findPersona(id);
-
-        persona.setNombre(nuevoNombre);
-        persona.setApellido(nuevoApellido);
-        persona.setImg(nuevoImg);
-        persona.setDescripcion(nuevaDescripcion);
-
-        ipersonaService.savePersona(persona);
-        return persona;
-    }
-
     @GetMapping("/traer/perfil")
     public Persona findPersona(){
         return ipersonaService.findPersona((long)1);
     }
 
->>>>>>> 7ee3f0631f43154e4a3485e79309bd925e4da092
+
 }
