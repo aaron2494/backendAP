@@ -57,8 +57,10 @@ public class PersonaController {
         ipersonaService.savePersona(pers);
         return new ResponseEntity(new Mensaje("persona actualizada"), HttpStatus.OK);
     }
-
-
+    @GetMapping("/traer/perfil")
+    public Persona findPersona(){
+        return ipersonaService.findPersona((long)1);
+    }
 
 
 }
